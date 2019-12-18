@@ -1,5 +1,14 @@
 # Backend tongji test project
 
+## GETTING STARTED
+To launch the project
+```bash
+$ npm i
+$ npm start # to launch the server
+$ npm test # to test obviously
+```
+
+## TODO
 - [x] project structure
 - [x] routes
   - [x] /blog
