@@ -3,6 +3,8 @@ const express = require("express");
 const app = express();
 const blog = require("./routes/blog");
 
+const db = require("./db");
+
 app.get("/ping", (_req, res) => {
   res.send("pong");
 });
