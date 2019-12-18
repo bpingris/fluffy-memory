@@ -1,15 +1,66 @@
 const express = require("express");
-
 const blog = express.Router();
 
+const db = require("../db");
+const uid = require("../helpers/uid");
+const ARTICLE_NOT_EXIST = "This article does not exist";
+
 blog.get("/", (req, res) => {
-  res.send("fdp lel");
+  const articlesPosts = db.get("articles").value();
+  res.send(articlesPosts);
+});
+
+blog.get("/:id", (req, res) => {
+  const articleID = req.params.id;
+  const article = db
+    .get("articles")
+    .find({ _id: articleID })
+    .value();
+  if (!article) {
+    return res.status(404).send(ARTICLE_NOT_EXIST);
+  }
+  res.send(article);
 });
 
 blog.post("/", (req, res) => {
   const { title, author, content } = req.body;
-  if (!title || !author || !content) return res.status(401).send("Body not correct.");
-  res.json({ title, author, content });
+  if (!title || !author || !content)
+    return res.status(401).send("Body not correct.");
+  const id = uid();
+
+  db.get("articles")
+    .push({ _id: id, title, author, content })
+    .write();
+
+  res.json({ title, author, content, _id: id });
+});
+
+blog.delete("/:id", (req, res) => {
+  const articleID = req.params.id;
+  const articles = db.get("articles");
+  const article = articles.find({ _id: articleID });
+  if (!article.value()) {
+    return res.status(404).send(ARTICLE_NOT_EXIST);
+  }
+  articles.remove({ _id: articleID }).write();
+  res.send("ok");
+});
+
+blog.put("/:id", (req, res) => {
+  const { title, author, content } = req.body;
+  const articleID = req.params.id;
+
+  if (!title || !author || !content)
+    return res.status(401).send("Body not correct.");
+
+  const article = db.get("articles").find({ _id: articleID });
+
+  if (!article.value()) {
+    return res.status(404).send(ARTICLE_NOT_EXIST);
+  }
+  article.assign({ _id: articleID, title, author, content }).write();
+
+  res.send("ok");
 });
 
 module.exports = blog;

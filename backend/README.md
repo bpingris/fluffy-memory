@@ -1,12 +1,12 @@
 # Backend tongji test project
 
 - [x] project structure
-- [ ] routes
-  - [ ] /blog
-    - [ ] GET
-    - [ ] DELETE
-    - [ ] POST
-    - [ ] UPDATE
+- [x] routes
+  - [x] /blog
+    - [x] GET
+    - [x] DELETE
+    - [x] POST
+    - [x] UPDATE
 - [ ] test
   - [ ] setup jest (or another unit test framework)
   - [ ] do tests so laoshi is gaoxing

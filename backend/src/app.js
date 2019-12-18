@@ -6,7 +6,7 @@ const blog = require("./routes/blog");
 const db = require("./db");
 
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/ping", (_req, res) => {
   res.send("pong");
