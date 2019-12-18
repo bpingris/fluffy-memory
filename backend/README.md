@@ -1,6 +1,6 @@
 # Backend tongji test project
 
-- [ ] project structure
+- [x] project structure
 - [ ] routes
   - [ ] /blog
     - [ ] GET

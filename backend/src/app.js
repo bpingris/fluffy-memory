@@ -1,9 +1,12 @@
 const express = require("express");
-
 const app = express();
+
 const blog = require("./routes/blog");
 
 const db = require("./db");
+
+app.use(express.json());
+app.use(express.urlencoded());
 
 app.get("/ping", (_req, res) => {
   res.send("pong");
