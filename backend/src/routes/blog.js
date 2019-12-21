@@ -28,11 +28,14 @@ blog.post("/", (req, res) => {
     return res.status(401).send("Body not correct.");
   const id = uid();
 
-  db.get("articles")
-    .push({ _id: id, title, author, content })
-    .write();
-
-  res.json({ title, author, content, _id: id });
+  try {
+    db.get("articles")
+      .push({ _id: id, title, author, content })
+      .write();
+    res.json({ title, author, content, _id: id });
+  } catch (error) {
+    res.status(500).send(error);
+  }
 });
 
 blog.delete("/:id", (req, res) => {
@@ -58,9 +61,12 @@ blog.put("/:id", (req, res) => {
   if (!article.value()) {
     return res.status(404).send(ARTICLE_NOT_EXIST);
   }
-  article.assign({ _id: articleID, title, author, content }).write();
-
-  res.send("ok");
+  try {
+    article.assign({ _id: articleID, title, author, content }).write();
+    res.send("ok");
+  } catch (error) {
+    res.status(500).send(error);
+  }
 });
 
 module.exports = blog;

@@ -11,7 +11,7 @@
         <v-card color="blue-gray" dark>
           <v-card-title class="headline" v-text="article.title"></v-card-title>
           <v-card-subtitle v-text="'by ' + article.author"></v-card-subtitle>
-          <v-card-text v-text="article.content"> </v-card-text>
+          <v-card-text>{{ article.content }} </v-card-text>
         </v-card>
         <div class="text-center mt-2">
           <v-btn @click="edit = true" color="indigo" dark>Update article</v-btn>
