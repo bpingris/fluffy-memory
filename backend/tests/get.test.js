@@ -24,5 +24,6 @@ describe("Get method", () => {
 
   	expect(res.body).toStrictEqual(post.body);
   	expect(res.status).toBe(200);
+  	done();
   });
 });
