@@ -5,7 +5,7 @@ const db = require("../db");
 const uid = require("../helpers/uid");
 const ARTICLE_NOT_EXIST = "This article does not exist";
 
-blog.get("/", (req, res) => {
+blog.get("/", (_req, res) => {
   const articlesPosts = db.get("articles").value();
   res.send(articlesPosts);
 });
