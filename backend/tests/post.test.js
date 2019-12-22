@@ -8,8 +8,8 @@ const body = {
 	content: "this is a test"
 }
 
-describe("Post method", () => {
-	it("Response to post without title", async done => {
+describe("POST method", () => {
+	it("Response to POST without title", async done => {
 		const body = {
 			author: "testman",
 			content: "this is a test"
@@ -21,7 +21,7 @@ describe("Post method", () => {
 		done();
 	});
 
-	it("Response to post without author", async done => {
+	it("Response to POST without author", async done => {
 		const body = {
 			title: "test",
 			content: "this is a test"
@@ -33,7 +33,7 @@ describe("Post method", () => {
 		done();
 	});
 
-	it("Response to post without content", async done => {
+	it("Response to POST without content", async done => {
 		const body = {
 			title: "test",
 			author: "testman"
@@ -45,7 +45,7 @@ describe("Post method", () => {
 		done();
 	});
 
-	it("Response to correct post", async done => {
+	it("Response to correct POST", async done => {
 		const body = {
 			title: "test",
 			author: "testman",

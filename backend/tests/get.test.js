@@ -8,8 +8,8 @@ const body = {
 	content: "this is a test"
 }
 
-describe("Get method", () => {
-  it("Responds to a get with wrong id", async done => {
+describe("GET method", () => {
+  it("Responds to a GET with wrong id", async done => {
     const res = await request.get("/blog/12");
 
     expect(res.text).toBe("This article does not exist");
@@ -17,7 +17,7 @@ describe("Get method", () => {
     done();
   });
 
-  it("Responds to a get with good id", async done => {
+  it("Responds to a GET with good id", async done => {
   	const post = await request.post("/blog").send(body);
 
   	const res = await request.get("/blog/" + post.body._id);
