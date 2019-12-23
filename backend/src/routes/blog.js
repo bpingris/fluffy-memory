@@ -63,7 +63,7 @@ blog.put("/:id", (req, res) => {
   }
   try {
     article.assign({ _id: articleID, title, author, content }).write();
-    res.send("ok");
+    res.send({ _id: articleID, title, author, content });
   } catch (error) {
     res.status(500).send(error);
   }
