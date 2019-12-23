@@ -2,7 +2,7 @@ const morgan = require("morgan");
 const express = require("express");
 const app = express();
 
-const blog = require("./routes/blog");
+const blog = require("./routes/blog")
 
 if (process.env.NODE_ENV !== "test") {
   app.use(morgan("tiny"));
