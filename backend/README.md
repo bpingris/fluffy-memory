@@ -18,7 +18,7 @@ It has 5 main routes:
 | GET       | /blog     | 200, 404           |
 | GET       | /blog/:id | 200, 404           |
 | POST      | /blog     | 200, 401, 500      |
-| DELETE    | /blog/:id | 200, 401           |
+| DELETE    | /blog/:id | 200, 404           |
 | PUT       | /blog/:id | 200, 401, 404, 500 |
 
 ## Database
